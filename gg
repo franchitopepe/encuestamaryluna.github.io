@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Frutas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        form input, form select, form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Frutas</h1>
+        <form id="fruitForm">
+            <label for="name">Nombre de la fruta:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="healthStatus">Estado de salubridad:</label>
+            <select id="healthStatus" name="healthStatus" required>
+                <option value="Apto">Apto</option>
+                <option value="En observación">En observación</option>
+                <option value="No apto">No apto</option>
+            </select>
+
+            <label for="germinationDate">Fecha de germinación:</label>
+            <input type="date" id="germinationDate" name="germinationDate" required>
+
+            <label for="exportDate">Fecha de exportación:</label>
+            <input type="date" id="exportDate" name="exportDate" required>
+
+            <button type="submit">Registrar Fruta</button>
+        </form>
+
+        <div id="result" style="margin-top: 20px; color: #28a745;"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('fruitForm');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const healthStatus = document.getElementById('healthStatus').value;
+            const germinationDate = document.getElementById('germinationDate').value;
+            const exportDate = document.getElementById('exportDate').value;
+
+            resultDiv.innerHTML = `
+                <h3>Fruta registrada con éxito:</h3>
+                <p><strong>Nombre:</strong> ${name}</p>
+                <p><strong>Estado de Salubridad:</strong> ${healthStatus}</p>
+                <p><strong>Fecha de Germinación:</strong> ${germinationDate}</p>
+                <p><strong>Fecha de Exportación:</strong> ${exportDate}</p>
+            `;
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
